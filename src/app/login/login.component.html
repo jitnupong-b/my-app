@@ -1,0 +1,30 @@
+<div fxLayoutAlign="center center" fxFlexFill class="main-div">
+  <mat-card fxFlex="20">
+    <mat-toolbar color="primary" fxLayoutAlign="center center"
+      >เข้าสู่ระบบ</mat-toolbar
+    >
+    <form
+      fxLayoutAlign="stretch"
+      fxLayout="column"
+      class="login-form"
+      [formGroup]="formGroup"
+      (ngSubmit)="loginProces()"
+    >
+      <mat-form-field>
+        <input matInput placeholder="อีเมล" formControlName="email" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          matInput
+          type="password"
+          placeholder="พาสเวิร์ด"
+          formControlName="password"
+        />
+      </mat-form-field>
+      <button mat-raised-button type="submit">
+        <i class="fas fa-sign-in-alt"></i> เข้าสู่ระบบ
+      </button>
+    </form>
+  </mat-card>
+</div>

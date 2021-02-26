@@ -1,0 +1,46 @@
+.main-div mat-card {
+  padding: 10px;
+}
+
+.container {
+  padding: 5%;
+}
+
+.full-width {
+  width: 95%;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+}
+
+.half-width {
+  width: 45%;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+}
+
+.gender-width {
+  width: 11%;
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+}
+
+.test {
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+}
+
+.half {
+  margin-left: 2.5%;
+  margin-right: 2.5%;
+  width: 45%;
+}
+
+th,
+td,
+button,
+a,
+input,
+mat-label,
+h3 {
+  font-family: "Kanit", sans-serif;
+}

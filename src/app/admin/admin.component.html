@@ -1,0 +1,111 @@
+<div fxLayoutAlign="center center" fxFlexFill class="main-div">
+  <mat-card fxFlex="60">
+    <form class="" [formGroup]="formGroup" (ngSubmit)="regisProces()">
+      <div class="form-container">
+        <h3 fxLayoutAlign="center center">เพิ่มผู้ใช้งาน</h3>
+        <mat-form-field class="half-width">
+          <mat-label>ชื่อจริง</mat-label>
+          <input
+            type="text"
+            matInput
+            placeholder="John"
+            value=""
+            formControlName="first_name"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field class="half-width">
+          <mat-label>นามสกุล</mat-label>
+          <input
+            type="text"
+            matInput
+            placeholder="Smith"
+            value=""
+            formControlName="last_name"
+            required
+          />
+        </mat-form-field>
+
+        <mat-form-field class="gender-width">
+          <mat-label>เพศ</mat-label>
+          <mat-select formControlName="gender" required>
+            <mat-option value="M">Male</mat-option>
+            <mat-option value="F">Female</mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <mat-label>อีเมล</mat-label>
+          <input
+            type="email"
+            matInput
+            placeholder="johnsmith@gmail.com"
+            value=""
+            formControlName="email"
+            required
+          />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <mat-label>รหัสผ่าน</mat-label>
+          <input
+            type="password"
+            matInput
+            value=""
+            formControlName="password"
+            required
+          />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <mat-label>โทรศัพท์</mat-label>
+          <input
+            type="text"
+            matInput
+            placeholder="0XXXXXXXXX"
+            value=""
+            formControlName="number"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field class="half">
+          <mat-label>หน่วยงาน</mat-label>
+          <input
+            type="text"
+            matInput
+            placeholder=""
+            value=""
+            formControlName="agency"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="half">
+          <mat-label>องค์กร</mat-label>
+
+          <mat-select [(value)]="organization" formControlName="organization">
+            <mat-option
+              *ngFor="let organization of organizations"
+              [value]="organization.id"
+              required
+              >{{ organization.name }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>สถานะ</mat-label>
+          <mat-select formControlName="permission" required>
+            <mat-option
+              *ngFor="let permission of permissions"
+              [value]="permission.permission"
+              >{{ permission.status }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+
+        <button mat-raised-button type="submit" fxFlexFill color="primary">
+          ยืนยัน
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>

@@ -1,0 +1,45 @@
+<div fxLayoutAlign="center center" fxFlexFill class="main-div">
+  <mat-card fxFlex="60">
+    <form class="" [formGroup]="formGroup" (ngSubmit)="addOrganizationSub()">
+      <div class="form-container">
+        <h3 fxLayoutAlign="center center">เพิ่มสังกัดย่อย</h3>
+        <mat-form-field class="half-width">
+          <mat-label>ชื่อสังกัด</mat-label>
+          <input
+            type="text"
+            matInput
+            placeholder="จังหวัดชลบุรี"
+            value=""
+            formControlName="name"
+            required
+          />
+        </mat-form-field>
+        <mat-form-field appearance="fill" class="half">
+          <mat-label>สังกัดใหญ่</mat-label>
+
+          <mat-select [(value)]="byid" formControlName="byid">
+            <mat-option
+              *ngFor="let byid of organizations"
+              [value]="byid.id"
+              required
+              >{{ byid.name }}</mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+
+        <button mat-raised-button type="submit" class="half" color="primary">
+          ยืนยัน
+        </button>
+        <button
+          mat-raised-button
+          class="half"
+          type="submit"
+          color="warn"
+          (click)="cancle()"
+        >
+          ยกเลิก
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>

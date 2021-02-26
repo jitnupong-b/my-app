@@ -1,0 +1,33 @@
+<div fxLayoutAlign="center center" fxFlexFill class="main-div">
+  <mat-card fxFlex="60">
+    <form class="" [formGroup]="formGroup" (ngSubmit)="addOrganizationMain()">
+      <div class="form-container">
+        <h3 fxLayoutAlign="center center">เพิ่มสังกัดใหญ่</h3>
+        <mat-form-field class="full-width">
+          <mat-label>ชื่อสังกัด</mat-label>
+          <input
+            type="text"
+            matInput
+            placeholder="สำนักงานสาธารณสุขจังหวัดชลบุรี"
+            value=""
+            formControlName="name"
+            required
+          />
+        </mat-form-field>
+
+        <button mat-raised-button type="submit" class="half" color="primary">
+          ยืนยัน
+        </button>
+        <button
+          mat-raised-button
+          class="half"
+          type="submit"
+          color="warn"
+          (click)="cancle()"
+        >
+          ยกเลิก
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>

@@ -1,0 +1,84 @@
+<div fxLayoutAlign="center" fxFlexFill class="main-div">
+  <mat-card fxFlex="90">
+    <mat-card>
+      <button
+        class="buttons"
+        mat-button
+        routerLink="/organization-main"
+        routerLinkActive="active"
+      >
+        เพิ่มสังกัดใหญ่
+      </button>
+      <button
+        class="buttons"
+        mat-button
+        routerLink="/organization-sub"
+        routerLinkActive="active"
+      >
+        เพิ่มสังกัดย่อย
+      </button>
+    </mat-card>
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef class="fontsize">No.</th>
+          <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef class="fontsize">ชื่อสังกัด</th>
+          <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef class="fontsize">สิทธิ์</th>
+
+          <td
+            mat-cell
+            *matCellDef="let element"
+            [ngStyle]="{
+              color: element.status == 'Supporter 2' ? 'orange' : 'green'
+            }"
+          >
+            {{ element.status }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="byname">
+          <th mat-header-cell *matHeaderCellDef class="fontsize">
+            หน่วยงานบังคับบัญชา
+          </th>
+          <td mat-cell *matCellDef="let element">{{ element.byname }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Manage">
+          <th mat-header-cell *matHeaderCellDef class="fontsize">จัดการ</th>
+          <td mat-cell *matCellDef="let element">
+            <button
+              mat-raised-button
+              color="primary"
+              (click)="selectOrganization(element.id, element.status)"
+            >
+              <i class="far fa-edit"></i> แก้ไข
+            </button>
+            <button
+              mat-raised-button
+              color="warn"
+              (click)="deleteOrganization(element.id)"
+            >
+              <i class="fas fa-trash-alt"></i> ลบสังกัด
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+
+      <mat-paginator
+        [pageSizeOptions]="[20, 30, 40]"
+        showFirstLastButtons
+      ></mat-paginator>
+    </div>
+  </mat-card>
+</div>

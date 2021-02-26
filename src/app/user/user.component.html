@@ -1,0 +1,90 @@
+<div fxLayoutAlign="center" fxFlexFill class="main-div">
+  <mat-card fxFlex="90">
+    <mat-card>
+      <a mat-raised-button href="admin" color="primary" target=""
+        ><i class="fas fa-user-plus"></i> เพิ่มผู้ใช้งาน</a
+      >
+    </mat-card>
+    <div class="mat-elevation-z8">
+      <table mat-table [dataSource]="dataSource">
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef class="fontsize">No.</th>
+          <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="firstName">
+          <th mat-header-cell *matHeaderCellDef class="fontsize">ชื่อจริง</th>
+          <td mat-cell *matCellDef="let element">{{ element.firstName }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="LastName">
+          <th mat-header-cell *matHeaderCellDef class="fontsize">นามสกุล</th>
+          <td mat-cell *matCellDef="let element">{{ element.lastName }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Gender">
+          <th mat-header-cell *matHeaderCellDef class="fontsize">เพศ</th>
+          <td mat-cell *matCellDef="let element">{{ element.gender }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Email">
+          <th mat-header-cell *matHeaderCellDef class="fontsize">อีเมล</th>
+          <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Phone">
+          <th mat-header-cell *matHeaderCellDef class="fontsize">โทรศัพท์</th>
+          <td mat-cell *matCellDef="let element">{{ element.number }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Status">
+          <th mat-header-cell *matHeaderCellDef class="fontsize">สถานะ</th>
+          <td mat-cell *matCellDef="let element">{{ element.status }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Organization">
+          <th mat-header-cell *matHeaderCellDef class="fontsize">สังกัด</th>
+          <td mat-cell *matCellDef="let element">{{ element.organization }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Agency">
+          <th mat-header-cell *matHeaderCellDef class="fontsize">หน่วยงาน</th>
+          <td mat-cell *matCellDef="let element">{{ element.agency }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Owner">
+          <th mat-header-cell *matHeaderCellDef class="fontsize">ผู้กำกับ</th>
+          <td mat-cell *matCellDef="let element">{{ element.owner }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="Manage">
+          <th mat-header-cell *matHeaderCellDef class="fontsize">จัดการ</th>
+          <td mat-cell *matCellDef="let element">
+            <button
+              mat-raised-button
+              color="primary"
+              (click)="selectUser(element.id)"
+            >
+              <i class="far fa-edit"></i> แก้ไข
+            </button>
+            <button
+              mat-raised-button
+              color="warn"
+              (click)="deleteUser(element.id)"
+            >
+              <i class="fas fa-trash-alt"></i> ลบผู้ใช้งาน
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+
+      <mat-paginator
+        [pageSizeOptions]="[20, 30, 40]"
+        showFirstLastButtons
+      ></mat-paginator>
+    </div>
+  </mat-card>
+</div>

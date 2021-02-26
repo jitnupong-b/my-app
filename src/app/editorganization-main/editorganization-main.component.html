@@ -1,0 +1,44 @@
+<div fxLayoutAlign="center center" fxFlexFill class="main-div">
+  <mat-card fxFlex="50">
+    <form class="" [formGroup]="formGroup" (ngSubmit)="updateOrganization()">
+      <div class="form-container">
+        <mat-form-field class="full-width">
+          <mat-label>ID</mat-label>
+          <input
+            matInput
+            placeholder=""
+            [(ngModel)]="id"
+            formControlName="id"
+            [disabled]="true"
+          />
+        </mat-form-field>
+
+        <mat-form-field class="full-width">
+          <mat-label>หน่วยงาน</mat-label>
+          <input
+            type="text"
+            matInput
+            placeholder=""
+            value=""
+            formControlName="name"
+            required
+            [(ngModel)]="name"
+          />
+        </mat-form-field>
+
+        <button mat-raised-button class="half" type="submit" color="primary">
+          อัพเดท
+        </button>
+        <button
+          mat-raised-button
+          class="half"
+          type="submit"
+          color="warn"
+          (click)="cancle()"
+        >
+          ยกเลิก
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>

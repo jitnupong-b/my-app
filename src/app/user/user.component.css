@@ -1,0 +1,26 @@
+table {
+  width: 100%;
+}
+button {
+  margin-right: 2%;
+}
+.main-div mat-card {
+  padding: 10px;
+}
+.example-spacer {
+  flex: 1 1 auto;
+}
+.green {
+  color: chartreuse;
+}
+
+.fontsize {
+  font-size: 18px;
+}
+
+th,
+td,
+button,
+a {
+  font-family: "Kanit", sans-serif;
+}
