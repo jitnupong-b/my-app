@@ -5,6 +5,14 @@
         ><i class="fas fa-user-plus"></i> เพิ่มผู้ใช้งาน</a
       >
     </mat-card>
+    <input
+      class="form-control"
+      type="text"
+      name="search"
+      [(ngModel)]="searchText"
+      autocomplete="off"
+      placeholder="&#61442;  Start searching for a hero by id or name or country"
+    />
     <div class="mat-elevation-z8">
       <table mat-table [dataSource]="dataSource">
         <ng-container matColumnDef="id">
