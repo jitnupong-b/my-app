@@ -14,6 +14,7 @@ import { AuthServiceService } from '../auth-service.service';
   styleUrls: ['./user.component.css'],
 })
 export class UserComponent implements AfterViewInit {
+  searchText: any;
   displayedColumns: string[] = [
     'id',
     'firstName',
