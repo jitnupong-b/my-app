@@ -96,7 +96,7 @@
           <mat-select [(value)]="organization" formControlName="organization">
             <mat-option
               *ngFor="let organization of organizations"
-              [value]="organization.id"
+              [value]="organization.name"
               required
               >{{ organization.name }}</mat-option
             >

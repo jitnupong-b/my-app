@@ -26,6 +26,7 @@ import { MatTableModule } from '@angular/material/table';
 import { TokenInterceptorService } from './token-interceptor.service';
 import { AuthServiceService } from './auth-service.service';
 import { EditComponent } from './edit/edit.component';
+import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { ProfileComponent } from './profile/profile.component';
 import { OrganizationComponent } from './organization/organization.component';
@@ -33,7 +34,7 @@ import { OrganizationMainComponent } from './organization-main/organization-main
 import { OrganizationSubComponent } from './organization-sub/organization-sub.component';
 import { EditorganizationMainComponent } from './editorganization-main/editorganization-main.component';
 import { EditorganizationSubComponent } from './editorganization-sub/editorganization-sub.component';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 @NgModule({
   declarations: [
     AppComponent,
@@ -67,7 +68,9 @@ import { EditorganizationSubComponent } from './editorganization-sub/editorganiz
     MatMenuModule,
     MatSelectModule,
     MatTableModule,
+    MatSortModule,
     MatPaginatorModule,
+    Ng2SearchPipeModule,
     RouterModule.forRoot([
       { path: '', component: DashboardComponent, canActivate: [AuthGuard] },
       { path: 'login', component: LoginComponent },

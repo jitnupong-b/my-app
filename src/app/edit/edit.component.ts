@@ -75,7 +75,7 @@ export class EditComponent implements OnInit {
       this.number = data.data.number;
       this.permission = data.data.status;
       this.agency = data.data.agency;
-      this.organization = data.data.ID_organization;
+      this.organization = data.data.organization;
     });
   }
   ngOnInit(): void {
