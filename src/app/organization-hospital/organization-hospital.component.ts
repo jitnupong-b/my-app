@@ -48,6 +48,8 @@ export class OrganizationHospitalComponent implements OnInit {
     this.formGroup = new FormGroup({
       name: new FormControl('', Validators.required),
       byid: new FormControl('', Validators.required),
+      address: new FormControl('', Validators.required),
+      telephone: new FormControl('', Validators.required),
     });
   }
 }

@@ -13,6 +13,8 @@ export class EditorganizationSubComponent implements OnInit {
   name: any;
   organization: any;
   organizations: any;
+  address: any;
+  telephone: any;
   formGroup!: FormGroup;
   constructor(private authService: AuthServiceService, private router: Router) {
     this.id = this.getIDOrganization();
@@ -21,6 +23,8 @@ export class EditorganizationSubComponent implements OnInit {
       .subscribe((result) => {
         this.name = result.data[0].name;
         this.organization = result.data[0].byname;
+        this.address = result.data[0].address;
+        this.telephone = result.data[0].telephone;
       });
     this.authService.getOrganizationsByPermission(5).subscribe((result) => {
       this.organizations = result.data;
@@ -63,6 +67,8 @@ export class EditorganizationSubComponent implements OnInit {
       id: new FormControl({ value: 'n/a', disabled: true }),
       name: new FormControl('', Validators.required),
       organization: new FormControl('', Validators.required),
+      address: new FormControl('', Validators.required),
+      telephone: new FormControl('', Validators.required),
     });
   }
 }

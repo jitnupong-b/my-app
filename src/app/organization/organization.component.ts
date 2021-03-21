@@ -11,7 +11,15 @@ import { AuthServiceService } from '../auth-service.service';
   styleUrls: ['./organization.component.css'],
 })
 export class OrganizationComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'name', 'status', 'byname', 'Manage'];
+  displayedColumns: string[] = [
+    'id',
+    'name',
+    'status',
+    'byname',
+    'address',
+    'telephone',
+    'Manage',
+  ];
   dataSource: any;
   dialog: any;
 
@@ -64,4 +72,6 @@ export interface PeriodicElement {
   permission: number;
   status: string;
   byname: string;
+  address: string;
+  telephone: string;
 }

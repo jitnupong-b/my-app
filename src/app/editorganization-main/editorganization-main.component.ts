@@ -11,6 +11,8 @@ import { AuthServiceService } from '../auth-service.service';
 export class EditorganizationMainComponent implements OnInit {
   id: any;
   name: any;
+  address: any;
+  telephone: any;
   formGroup!: FormGroup;
   constructor(private authService: AuthServiceService, private router: Router) {
     this.id = this.getIDOrganization();
@@ -18,6 +20,8 @@ export class EditorganizationMainComponent implements OnInit {
       .getOrganizationByID(this.getIDOrganization())
       .subscribe((result) => {
         this.name = result.data[0].name;
+        this.address = result.data[0].address;
+        this.telephone = result.data[0].telephone;
       });
   }
   cancle() {
@@ -55,6 +59,8 @@ export class EditorganizationMainComponent implements OnInit {
       // }),
       id: new FormControl({ value: 'n/a', disabled: true }),
       name: new FormControl('', Validators.required),
+      address: new FormControl('', Validators.required),
+      telephone: new FormControl('', Validators.required),
     });
   }
 }

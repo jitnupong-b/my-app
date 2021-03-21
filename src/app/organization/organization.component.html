@@ -67,6 +67,18 @@
           <td mat-cell *matCellDef="let element">{{ element.byname }}</td>
         </ng-container>
 
+        <ng-container matColumnDef="address">
+          <th mat-header-cell *matHeaderCellDef class="fontsize">ที่อยู่</th>
+          <td mat-cell *matCellDef="let element">{{ element.address }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="telephone">
+          <th mat-header-cell *matHeaderCellDef class="fontsize">
+            เบอร์โทรศัพท์
+          </th>
+          <td mat-cell *matCellDef="let element">{{ element.telephone }}</td>
+        </ng-container>
+
         <ng-container matColumnDef="Manage">
           <th mat-header-cell *matHeaderCellDef class="fontsize">จัดการ</th>
           <td mat-cell *matCellDef="let element">

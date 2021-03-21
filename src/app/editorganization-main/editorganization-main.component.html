@@ -25,6 +25,30 @@
             [(ngModel)]="name"
           />
         </mat-form-field>
+        <mat-form-field class="full-width">
+          <mat-label>ที่อยู่</mat-label>
+          <input
+            type="text"
+            matInput
+            placeholder="ที่อยู่"
+            value=""
+            formControlName="address"
+            required
+            [(ngModel)]="address"
+          />
+        </mat-form-field>
+        <mat-form-field class="full-width">
+          <mat-label>เบอร์โทรศัพท์</mat-label>
+          <input
+            type="text"
+            matInput
+            placeholder="เบอร์โทรศัพท์"
+            value=""
+            formControlName="telephone"
+            required
+            [(ngModel)]="telephone"
+          />
+        </mat-form-field>
 
         <button mat-raised-button class="half" type="submit" color="primary">
           อัพเดท
