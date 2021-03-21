@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -35,6 +34,8 @@ import { OrganizationSubComponent } from './organization-sub/organization-sub.co
 import { EditorganizationMainComponent } from './editorganization-main/editorganization-main.component';
 import { EditorganizationSubComponent } from './editorganization-sub/editorganization-sub.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { OrganizationHospitalComponent } from './organization-hospital/organization-hospital.component';
+import { EditorganizationHospitalComponent } from './editorganization-hospital/editorganization-hospital.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,6 +50,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     OrganizationSubComponent,
     EditorganizationMainComponent,
     EditorganizationSubComponent,
+    OrganizationHospitalComponent,
+    EditorganizationHospitalComponent,
   ],
   imports: [
     BrowserModule,
@@ -103,6 +106,11 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
         canActivate: [AuthGuard],
       },
       {
+        path: 'organization-hospital',
+        component: OrganizationHospitalComponent,
+        canActivate: [AuthGuard],
+      },
+      {
         path: 'editorganization_main',
         component: EditorganizationMainComponent,
         canActivate: [AuthGuard],
@@ -110,6 +118,11 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
       {
         path: 'editorganization_sub',
         component: EditorganizationSubComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: 'editorganization_hospital',
+        component: EditorganizationHospitalComponent,
         canActivate: [AuthGuard],
       },
     ]),

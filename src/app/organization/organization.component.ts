@@ -17,9 +17,9 @@ export class OrganizationComponent implements OnInit {
 
   constructor(private authService: AuthServiceService, private router: Router) {
     let myStatus = this.authService.getMyStatus();
-    if (myStatus != '6') {
-      this.router.navigate(['dashboard']);
-    }
+    // if (myStatus != '6') {
+    //   this.router.navigate(['dashboard']);
+    // }
     this.authService.getOrganizations_all().subscribe((data: any) => {
       this.dataSource = new MatTableDataSource<PeriodicElement>(data.data);
       this.dataSource.paginator = this.paginator;
@@ -40,6 +40,9 @@ export class OrganizationComponent implements OnInit {
     } else if (permission == 'Supporter 1') {
       localStorage.setItem('selectIDOrganization', id);
       this.router.navigate(['editorganization_sub']);
+    } else if (permission == 'Operator Foreman Superviser') {
+      localStorage.setItem('selectIDOrganization', id);
+      this.router.navigate(['editorganization_hospital']);
     }
   }
   deleteOrganization(id: any) {

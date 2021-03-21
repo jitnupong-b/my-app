@@ -1,7 +1,42 @@
 <div fxLayoutAlign="center center" fxFlexFill class="main-div">
   <mat-card fxFlex="50">
+    <mat-card>
+      <a><font size="7">แก้ไขผู้ใช้งาน </font></a>
+    </mat-card>
     <form class="" [formGroup]="formGroup" (ngSubmit)="updateUser()">
       <div class="form-container">
+        <mat-card>
+          <mat-form-field appearance="fill" class="half">
+            <mat-label>สถานะ</mat-label>
+            <mat-select
+              formControlName="permission"
+              required
+              (selectionChange)="dataset($event)"
+            >
+              <mat-option
+                *ngFor="let permission of permissions"
+                [value]="{
+                  permission: permission.permission,
+                  id: permission.id
+                }"
+                >{{ permission.status }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="half">
+            <mat-label>องค์กร</mat-label>
+
+            <mat-select [(value)]="organization" formControlName="organization">
+              <mat-option
+                *ngFor="let organization of organizations"
+                [value]="organization.id"
+                required
+                >{{ organization.name }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+        </mat-card>
         <mat-form-field class="full-width">
           <mat-label>ID</mat-label>
           <input
@@ -77,8 +112,8 @@
             [(ngModel)]="number"
           />
         </mat-form-field>
-        <mat-form-field class="half">
-          <mat-label>หน่วยงาน</mat-label>
+        <mat-form-field class="full-width">
+          <mat-label>ตำแหน่ง</mat-label>
           <input
             type="text"
             matInput
@@ -90,33 +125,6 @@
           />
         </mat-form-field>
 
-        <mat-form-field appearance="fill" class="half">
-          <mat-label>องค์กร</mat-label>
-
-          <mat-select [(value)]="organization" formControlName="organization">
-            <mat-option
-              *ngFor="let organization of organizations"
-              [value]="organization.name"
-              required
-              >{{ organization.name }}</mat-option
-            >
-          </mat-select>
-        </mat-form-field>
-
-        <mat-form-field appearance="fill" class="full-width">
-          <mat-label>สถานะ</mat-label>
-          <mat-select
-            formControlName="permission"
-            [(value)]="permission"
-            required
-          >
-            <mat-option
-              *ngFor="let permission of permissions"
-              [value]="permission.permission"
-              >{{ permission.status }}</mat-option
-            >
-          </mat-select>
-        </mat-form-field>
         <button mat-raised-button class="half" type="submit" color="primary">
           อัพเดท
         </button>

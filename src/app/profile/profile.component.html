@@ -2,6 +2,9 @@
   <mat-card fxFlex="50">
     <form class="" [formGroup]="formGroup" (ngSubmit)="updateProfile()">
       <div class="form-container">
+        <mat-card>
+          <a><font size="7">แก้ไขข้อมูลส่วนตัว </font></a>
+        </mat-card>
         <mat-form-field class="full-width">
           <mat-label>เลขที่</mat-label>
           <input
@@ -64,6 +67,27 @@
             [(ngModel)]="Email"
           />
         </mat-form-field>
+        <mat-form-field class="half">
+          <mat-label>รหัสผ่านเก่า</mat-label>
+          <input
+            type="password"
+            matInput
+            placeholder=""
+            value=""
+            formControlName="password_old"
+          />
+        </mat-form-field>
+
+        <mat-form-field class="half">
+          <mat-label>รหัสผ่านใหม่</mat-label>
+          <input
+            type="password"
+            matInput
+            placeholder=""
+            value=""
+            formControlName="password_new"
+          />
+        </mat-form-field>
 
         <mat-form-field class="full-width">
           <mat-label>โทรศัพท์</mat-label>
@@ -78,7 +102,7 @@
           />
         </mat-form-field>
         <mat-form-field class="half">
-          <mat-label>หน่วยงาน</mat-label>
+          <mat-label>ตำแหน่ง</mat-label>
           <input
             [(ngModel)]="agency"
             type="text"

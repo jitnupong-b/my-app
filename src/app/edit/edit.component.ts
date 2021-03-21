@@ -47,19 +47,19 @@ export class EditComponent implements OnInit {
     private router: Router,
     private http: HttpClient
   ) {
-    let myStatus = this.authService.getMyStatus();
+    // let myStatus = this.authService.getMyStatus();
 
-    if (myStatus === '6') {
-      this.authService.getOrganizations_all().subscribe((result) => {
-        this.organizations = result.data;
-      });
-    } else {
-      this.authService
-        .getOrganizations(myStatus, this.authService.getIDOrganization())
-        .subscribe((result) => {
-          this.organizations = result.data;
-        });
-    }
+    // if (myStatus === '6') {
+    //   this.authService.getOrganizations_all().subscribe((result) => {
+    //     this.organizations = result.data;
+    //   });
+    // } else {
+    //   this.authService
+    //     .getOrganizations(myStatus, this.authService.getIDOrganization())
+    //     .subscribe((result) => {
+    //       this.organizations = result.data;
+    //     });
+    // }
     this.authService
       .getPermission(this.authService.getMyStatus())
       .subscribe((permiss: any) => {
@@ -102,24 +102,38 @@ export class EditComponent implements OnInit {
 
   getID() {
     return localStorage.getItem('selectID');
-    // localStorage.removeItem('selectID');
   }
 
-  // updateUser() {
-  //   if (this.formGroup.valid) {
-  //     alert('test');
-  //   }
-  // }
+  dataset(data: any) {
+    let myStatus = this.authService.getMyStatus();
+
+    if (myStatus === '6') {
+      this.authService
+        .getOrganizationsByPermission(data.value.permission)
+        .subscribe((result) => {
+          this.organizations = result.data;
+        });
+    } else {
+      this.authService
+        .getOrganizations(data.value, this.authService.getIDOrganization())
+        .subscribe((result) => {
+          this.organizations = result.data;
+        });
+    }
+  }
 
   updateUser() {
     if (this.formGroup.value.permission != '') {
       this.formGroup.value.id = this.getID();
+      console.log(this.formGroup.value);
       this.authService
         .getOrganizationsByID(this.formGroup.value.organization)
         .subscribe((result) => {
           this.formGroup.value.ID_organization = result.data[0].byid;
           this.formGroup.value.organization = result.data[0].name;
+          this.formGroup.value.permission = this.formGroup.value.permission.id;
           this.authService.update(this.formGroup.value).subscribe((result) => {
+            console.log(this.formGroup.value);
             if (result.success) {
               alert('ทำรายการสำเร็จ');
               this.router.navigate(['user']);

@@ -20,14 +20,14 @@ export class UserComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator | undefined;
   displayedColumns: string[] = [
     'id',
+    'status',
+    'agency',
     'firstName',
     'lastName',
     'gender',
     'email',
     'number',
-    'status',
     'organization',
-    'agency',
     'owner',
     'Manage',
   ];
@@ -89,7 +89,7 @@ export class UserComponent implements OnInit, AfterViewInit {
       this.authService.users().subscribe((data: any) => {
         for (let i = 0; i < data.data.length; i++) {
           for (let o = 0; o < status.data.length; o++) {
-            if (data.data[i].status === status.data[o].permission) {
+            if (data.data[i].status === status.data[o].id) {
               data.data[i].status = status.data[o].status;
             }
           }
@@ -223,7 +223,7 @@ export class UserComponent implements OnInit, AfterViewInit {
   deleteUser(id: any) {
     if (confirm('Are you sure to delete ID : ' + id)) {
       this.authService
-        .deleteUser({
+        .updatedeleteUser({
           body: { id: id },
         })
         .subscribe((result) => {

@@ -31,6 +31,8 @@ export class ProfileComponent implements OnInit {
   FirstName: any;
   LastName: any;
   Gender: any;
+  password_old: any;
+  password_new: any;
   Email: any;
   number: any;
   ID_organization: any;
@@ -57,6 +59,7 @@ export class ProfileComponent implements OnInit {
       this.number = data.data.number;
       this.agency = data.data.agency;
       this.organization = data.data.organization;
+      this.ID_organization = data.data.ID_organization;
     });
   }
   ngOnInit(): void {
@@ -64,14 +67,21 @@ export class ProfileComponent implements OnInit {
   }
   initForm() {
     this.formGroup = new FormGroup({
-      id: new FormControl({ value: 'n/a', disabled: true }),
+      id: new FormControl(
+        { value: 'n/a', disabled: true },
+        Validators.required
+      ),
       first_name: new FormControl('', Validators.required),
       last_name: new FormControl('', Validators.required),
       gender: new FormControl('', Validators.required),
       email: new FormControl('', Validators.required),
-      password: new FormControl('', Validators.required),
+      password_old: new FormControl(''),
+      password_new: new FormControl(''),
       number: new FormControl('', Validators.required),
-      organization: new FormControl({ value: 'n/a', disabled: true }),
+      organization: new FormControl(
+        { value: 'n/a', disabled: true },
+        Validators.required
+      ),
       agency: new FormControl('', Validators.required),
     });
   }
@@ -79,15 +89,19 @@ export class ProfileComponent implements OnInit {
   getID() {
     return localStorage.getItem('ID');
   }
+  getEmail() {
+    return localStorage.getItem('email');
+  }
 
   updateProfile() {
-    if (this.formGroup.value.organization != '') {
+    if (this.formGroup.value) {
       this.formGroup.value.id = this.getID();
-      this.formGroup.value.ID_organization = this.formGroup.value.organization;
+      this.formGroup.value.ID_organization = this.ID_organization;
+
       this.authService
-        .getOrganizationByID(this.formGroup.value.organization)
-        .subscribe((result) => {
-          this.formGroup.value.organization = result.data[0].name;
+        .getOrganizationByName(this.organization)
+        .subscribe((results) => {
+          this.formGroup.value.organization = results.data[0].name;
           this.authService.update(this.formGroup.value).subscribe((result) => {
             if (result.success) {
               localStorage.setItem('agency', this.formGroup.value.agency);
@@ -95,12 +109,60 @@ export class ProfileComponent implements OnInit {
                 'organization',
                 this.formGroup.value.organization
               );
-              // alert(result.message);
+              if (
+                this.formGroup.value.password_old != '' &&
+                this.formGroup.value.password_new != ''
+              ) {
+                this.formGroup.value.changepass = {
+                  ['email']: this.getEmail(),
+                  ['password']: this.formGroup.value.password_old,
+                };
+
+                this.authService
+                  .checkpass(this.formGroup.value.changepass)
+                  .subscribe((result) => {
+                    if (result.success) {
+                      this.formGroup.value.sendpass = {
+                        ['id']: this.getID(),
+                        ['password']: this.formGroup.value.password_new,
+                      };
+                      this.authService
+                        .updatePassword(this.formGroup.value.sendpass)
+                        .subscribe((result) => {
+                          if (result.success) {
+                            alert('เปลี่ยนรหัสผ่านสำเร็จ');
+                          }
+                        });
+
+                      //
+                      //
+                    } else {
+                      alert('รหัสผ่านเก่าไม่ถูกต้อง');
+                    }
+                  });
+                // if (this.formGroup.valid) {
+                //   this.authService.login(this.formGroup.value).subscribe((result) => {
+                //     if (result.success) {
+                //       alert('เข้าสู่ระบบสำเร็จ');
+                //       this.authService.setLoggedIn(true);
+                //       this.router.navigate(['dashboard']);
+
+                //       // this.token = result.token;
+                //       // alert(result.token);
+                //       // this.authService.namet('testeiei');
+                //     } else {
+                //       alert('เข้าสู่ระบบล้มเหลว');
+                //     }
+                //   });
+                // }
+                console.log('test');
+              }
+              alert(result.message);
               // window.location.href = window.location.href;
 
               // alert('yes');
               // this.authService.setLoggedIn(true);
-              // this.router.navigate(['dashboard']);
+              this.router.navigate(['dashboard']);
 
               // this.token = result.token;
               // alert(result.token);

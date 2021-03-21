@@ -33,6 +33,9 @@ export class AuthServiceService {
     // return localStorage.getItem('name');
     return localStorage.getItem('name');
   }
+  getMyEmail() {
+    return localStorage.getItem('email');
+  }
   getMyStatus() {
     return localStorage.getItem('status');
   }
@@ -85,6 +88,7 @@ export class AuthServiceService {
         'name',
         dataa.result.firstName + ' ' + dataa.result.lastName
       );
+      localStorage.setItem('email', dataa.result.email);
       localStorage.setItem('IDOrganization', dataa.result.ID_organization);
       localStorage.setItem('status', dataa.result.status);
       localStorage.setItem('organization', dataa.result.organization);
@@ -94,6 +98,10 @@ export class AuthServiceService {
       this.getMystatusName();
     });
     return this.http.post(`${baseUrl}users/login`, data);
+  }
+
+  checkpass(data: any): Observable<any> {
+    return this.http.post(`${baseUrl}users/checkpass`, data);
   }
 
   register(data: any): Observable<any> {
@@ -107,9 +115,16 @@ export class AuthServiceService {
   addOrganizationSub(data: any): Observable<any> {
     return this.http.post(`${baseUrl}users/addOrganizationSub`, data);
   }
+  addOrganizationHospital(data: any): Observable<any> {
+    return this.http.post(`${baseUrl}users/addOrganizationHospital`, data);
+  }
 
   update(data: any): Observable<any> {
     return this.http.patch(`${baseUrl}users/updateProfiles`, data);
+  }
+
+  updatePassword(data: any): Observable<any> {
+    return this.http.patch(`${baseUrl}users/updatePassword`, data);
   }
   updateOrganization_main(data: any): Observable<any> {
     return this.http.patch(`${baseUrl}users/updateOrganization_main`, data);
@@ -118,8 +133,8 @@ export class AuthServiceService {
     return this.http.patch(`${baseUrl}users/updateOrganization_sub`, data);
   }
 
-  deleteUser(data: any): Observable<any> {
-    return this.http.delete(`${baseUrl}users/deleteUser`, data);
+  updatedeleteUser(data: any): Observable<any> {
+    return this.http.patch(`${baseUrl}users/updatedeleteUser`, data);
   }
 
   deleteOrganization(data: any): Observable<any> {
@@ -172,5 +187,8 @@ export class AuthServiceService {
   }
   getOrganizationByID(id: any): Observable<any> {
     return this.http.get(`${baseUrl}users/getOrganizationByID/` + id);
+  }
+  getOrganizationByName(id: any): Observable<any> {
+    return this.http.get(`${baseUrl}users/getOrganizationByName/` + id);
   }
 }

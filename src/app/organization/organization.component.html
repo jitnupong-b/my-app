@@ -1,21 +1,32 @@
 <div fxLayoutAlign="center" fxFlexFill class="main-div">
   <mat-card fxFlex="90">
     <mat-card>
+      <a><font size="7">จัดการสังกัด </font></a>
+    </mat-card>
+    <mat-card>
       <button
-        class="buttons"
-        mat-button
+        color="primary"
+        mat-raised-button
         routerLink="/organization-main"
         routerLinkActive="active"
       >
         เพิ่มสังกัดใหญ่
       </button>
       <button
-        class="buttons"
-        mat-button
+        color="primary"
+        mat-raised-button
         routerLink="/organization-sub"
         routerLinkActive="active"
       >
         เพิ่มสังกัดย่อย
+      </button>
+      <button
+        color="primary"
+        mat-raised-button
+        routerLink="/organization-hospital"
+        routerLinkActive="active"
+      >
+        เพิ่มโรงพยาบาล
       </button>
     </mat-card>
     <div class="mat-elevation-z8">
@@ -37,7 +48,12 @@
             mat-cell
             *matCellDef="let element"
             [ngStyle]="{
-              color: element.status == 'Supporter 2' ? 'orange' : 'green'
+              color:
+                element.status == 'Supporter 2'
+                  ? 'orange'
+                  : element.status == 'Supporter 1'
+                  ? 'green'
+                  : null
             }"
           >
             {{ element.status }}

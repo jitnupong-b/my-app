@@ -1,21 +1,25 @@
 <div fxLayoutAlign="center center" fxFlexFill class="main-div">
   <mat-card fxFlex="60">
-    <form class="" [formGroup]="formGroup" (ngSubmit)="addOrganizationSub()">
+    <form
+      class=""
+      [formGroup]="formGroup"
+      (ngSubmit)="addOrganizationHospital()"
+    >
       <div class="form-container">
-        <h3 fxLayoutAlign="center center">เพิ่มสังกัดย่อย</h3>
+        <h3 fxLayoutAlign="center center">เพิ่มโรงพยาบาล</h3>
         <mat-form-field class="half-width">
-          <mat-label>ชื่อสังกัด</mat-label>
+          <mat-label>ชื่อโรงพยาบาล</mat-label>
           <input
             type="text"
             matInput
-            placeholder="สำนักงานสาธารณสุขอำเภอ"
+            placeholder="โรงพยาบาล"
             value=""
             formControlName="name"
             required
           />
         </mat-form-field>
         <mat-form-field appearance="fill" class="half">
-          <mat-label>สังกัดใหญ่</mat-label>
+          <mat-label>สังกัดย่อย</mat-label>
 
           <mat-select [(value)]="byid" formControlName="byid">
             <mat-option

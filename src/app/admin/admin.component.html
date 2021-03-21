@@ -2,7 +2,38 @@
   <mat-card fxFlex="60">
     <form class="" [formGroup]="formGroup" (ngSubmit)="regisProces()">
       <div class="form-container">
-        <h3 fxLayoutAlign="center center">เพิ่มผู้ใช้งาน</h3>
+        <mat-card>
+          <a><font size="7">เพิ่มผู้ใช้งาน </font></a>
+        </mat-card>
+        <mat-card>
+          <mat-form-field appearance="fill" class="half">
+            <mat-label>สถานะ</mat-label>
+            <mat-select
+              formControlName="permission"
+              required
+              (selectionChange)="dataset($event)"
+            >
+              <mat-option
+                *ngFor="let permission of permissions"
+                [value]="permission.permission"
+                >{{ permission.status }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" class="half">
+            <mat-label>องค์กร</mat-label>
+
+            <mat-select [(value)]="organization" formControlName="organization">
+              <mat-option
+                *ngFor="let organization of organizations"
+                [value]="organization.id"
+                required
+                >{{ organization.name }}</mat-option
+              >
+            </mat-select>
+          </mat-form-field>
+        </mat-card>
         <mat-form-field class="half-width">
           <mat-label>ชื่อจริง</mat-label>
           <input
@@ -29,8 +60,8 @@
         <mat-form-field class="gender-width">
           <mat-label>เพศ</mat-label>
           <mat-select formControlName="gender" required>
-            <mat-option value="M">Male</mat-option>
-            <mat-option value="F">Female</mat-option>
+            <mat-option value="M">ชาย</mat-option>
+            <mat-option value="F">หญิง</mat-option>
           </mat-select>
         </mat-form-field>
 
@@ -46,7 +77,7 @@
           />
         </mat-form-field>
 
-        <mat-form-field class="full-width">
+        <!-- <mat-form-field class="full-width">
           <mat-label>รหัสผ่าน</mat-label>
           <input
             type="password"
@@ -55,7 +86,7 @@
             formControlName="password"
             required
           />
-        </mat-form-field>
+        </mat-form-field> -->
 
         <mat-form-field class="full-width">
           <mat-label>โทรศัพท์</mat-label>
@@ -68,8 +99,8 @@
             required
           />
         </mat-form-field>
-        <mat-form-field class="half">
-          <mat-label>หน่วยงาน</mat-label>
+        <mat-form-field class="full-width">
+          <mat-label>ตำแหน่ง</mat-label>
           <input
             type="text"
             matInput
@@ -78,28 +109,6 @@
             formControlName="agency"
             required
           />
-        </mat-form-field>
-        <mat-form-field appearance="fill" class="half">
-          <mat-label>องค์กร</mat-label>
-
-          <mat-select [(value)]="organization" formControlName="organization">
-            <mat-option
-              *ngFor="let organization of organizations"
-              [value]="organization.id"
-              required
-              >{{ organization.name }}</mat-option
-            >
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field appearance="fill" class="full-width">
-          <mat-label>สถานะ</mat-label>
-          <mat-select formControlName="permission" required>
-            <mat-option
-              *ngFor="let permission of permissions"
-              [value]="permission.permission"
-              >{{ permission.status }}</mat-option
-            >
-          </mat-select>
         </mat-form-field>
 
         <button mat-raised-button type="submit" fxFlexFill color="primary">
