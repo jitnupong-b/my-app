@@ -6,9 +6,9 @@
       (ngSubmit)="addOrganizationHospital()"
     >
       <div class="form-container">
-        <h3 fxLayoutAlign="center center">เพิ่มโรงพยาบาล</h3>
+        <h3 fxLayoutAlign="center center">เพิ่มโรงพยาบาล/รพ.สต./อปท. ใหม่</h3>
         <mat-form-field class="half-width">
-          <mat-label>ชื่อโรงพยาบาล</mat-label>
+          <mat-label>ชื่อหน่วยงาน</mat-label>
           <input
             type="text"
             matInput
@@ -19,7 +19,7 @@
           />
         </mat-form-field>
         <mat-form-field appearance="fill" class="half">
-          <mat-label>สังกัดย่อย</mat-label>
+          <mat-label>สสอ.ผู้ทำหน้าที่กำกับดูแล</mat-label>
 
           <mat-select [(value)]="byid" formControlName="byid">
             <mat-option

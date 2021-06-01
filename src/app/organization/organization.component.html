@@ -1,32 +1,17 @@
 <div fxLayoutAlign="center" fxFlexFill class="main-div">
   <mat-card fxFlex="90">
     <mat-card>
-      <a><font size="7">จัดการสังกัด </font></a>
+      <h1>จัดการหน่วยงาน</h1>
     </mat-card>
     <mat-card>
-      <button
-        color="primary"
-        mat-raised-button
-        routerLink="/organization-main"
-        routerLinkActive="active"
-      >
-        เพิ่มสังกัดใหญ่
+      <button color="primary" mat-raised-button routerLink="/organization-main" routerLinkActive="active">
+        เพิ่มสสจ.
       </button>
-      <button
-        color="primary"
-        mat-raised-button
-        routerLink="/organization-sub"
-        routerLinkActive="active"
-      >
-        เพิ่มสังกัดย่อย
+      <button color="primary" mat-raised-button routerLink="/organization-sub" routerLinkActive="active">
+        เพิ่มสสอ.
       </button>
-      <button
-        color="primary"
-        mat-raised-button
-        routerLink="/organization-hospital"
-        routerLinkActive="active"
-      >
-        เพิ่มโรงพยาบาล
+      <button color="primary" mat-raised-button routerLink="/organization-hospital" routerLinkActive="active">
+        เพิ่ม รพ./รพ.สต./อปท.
       </button>
     </mat-card>
     <div class="mat-elevation-z8">
@@ -44,18 +29,14 @@
         <ng-container matColumnDef="status">
           <th mat-header-cell *matHeaderCellDef class="fontsize">สิทธิ์</th>
 
-          <td
-            mat-cell
-            *matCellDef="let element"
-            [ngStyle]="{
+          <td mat-cell *matCellDef="let element" [ngStyle]="{
               color:
                 element.status == 'Supporter 2'
                   ? 'orange'
                   : element.status == 'Supporter 1'
                   ? 'green'
                   : null
-            }"
-          >
+            }">
             {{ element.status }}
           </td>
         </ng-container>
@@ -82,18 +63,10 @@
         <ng-container matColumnDef="Manage">
           <th mat-header-cell *matHeaderCellDef class="fontsize">จัดการ</th>
           <td mat-cell *matCellDef="let element">
-            <button
-              mat-raised-button
-              color="primary"
-              (click)="selectOrganization(element.id, element.status)"
-            >
+            <button mat-raised-button color="primary" (click)="selectOrganization(element.id, element.status)">
               <i class="far fa-edit"></i> แก้ไข
             </button>
-            <button
-              mat-raised-button
-              color="warn"
-              (click)="deleteOrganization(element.id)"
-            >
+            <button mat-raised-button color="warn" (click)="deleteOrganization(element.id)">
               <i class="fas fa-trash-alt"></i> ลบสังกัด
             </button>
           </td>
@@ -103,10 +76,7 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
       </table>
 
-      <mat-paginator
-        [pageSizeOptions]="[20, 30, 40]"
-        showFirstLastButtons
-      ></mat-paginator>
+      <mat-paginator [pageSizeOptions]="[20, 30, 40]" showFirstLastButtons></mat-paginator>
     </div>
   </mat-card>
 </div>

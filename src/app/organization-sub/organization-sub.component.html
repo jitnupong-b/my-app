@@ -2,9 +2,9 @@
   <mat-card fxFlex="60">
     <form class="" [formGroup]="formGroup" (ngSubmit)="addOrganizationSub()">
       <div class="form-container">
-        <h3 fxLayoutAlign="center center">เพิ่มสังกัดย่อย</h3>
+        <h3 fxLayoutAlign="center center">เพิ่มหน่วยงานระดับ สสอ. ใหม่</h3>
         <mat-form-field class="half-width">
-          <mat-label>ชื่อสังกัด</mat-label>
+          <mat-label>ชื่อหน่วยงาน</mat-label>
           <input
             type="text"
             matInput
@@ -15,7 +15,7 @@
           />
         </mat-form-field>
         <mat-form-field appearance="fill" class="half">
-          <mat-label>สังกัดใหญ่</mat-label>
+          <mat-label>เลือกสสจ.ที่ทำหน้าที่กำกับดูแล</mat-label>
 
           <mat-select [(value)]="byid" formControlName="byid">
             <mat-option
