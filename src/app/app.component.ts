@@ -12,6 +12,12 @@ export class AppComponent {
   logoutbtn: boolean;
   status: boolean = false;
   title = 'my-app';
+
+  name = this.authService.getName();
+  email = this.authService.getMyEmail();
+  agency = this.authService.getMyAgency();
+  organization = this.authService.myOrganization();
+
   constructor(private authService: AuthServiceService, private router: Router) {
     if (this.authService.isLoggedIn2()) {
       this.authService.users().subscribe((data: any) => {
@@ -37,6 +43,8 @@ export class AppComponent {
     } else {
       this.status = false;
     }
+
+
   }
   private changeName(name: boolean): void {
     // if (this.authService.getStatus() === 'Supporter3') {

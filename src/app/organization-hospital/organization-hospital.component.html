@@ -1,71 +1,44 @@
-<div fxLayoutAlign="center center" fxFlexFill class="main-div">
-  <mat-card fxFlex="60">
-    <form
-      class=""
-      [formGroup]="formGroup"
-      (ngSubmit)="addOrganizationHospital()"
-    >
-      <div class="form-container">
-        <h3 fxLayoutAlign="center center">เพิ่มโรงพยาบาล/รพ.สต./อปท. ใหม่</h3>
-        <mat-form-field class="half-width">
-          <mat-label>ชื่อหน่วยงาน</mat-label>
-          <input
-            type="text"
-            matInput
-            placeholder="โรงพยาบาล"
-            value=""
-            formControlName="name"
-            required
-          />
-        </mat-form-field>
-        <mat-form-field appearance="fill" class="half">
-          <mat-label>สสอ.ผู้ทำหน้าที่กำกับดูแล</mat-label>
+<div class="container" style="margin-top: 40px;">
+  <div class="card">
+    <div class="card-header">เพิ่มโรงพยาบาล/รพ.สต./อปท. ใหม่</div>
+    <div class="card-body">
+      <form class="" [formGroup]="formGroup" (ngSubmit)="addOrganizationHospital()">
+        <div class="form-container">
+          <h3 fxLayoutAlign="center center"></h3>
+          <mat-form-field class="half-width">
+            <mat-label>ชื่อหน่วยงาน</mat-label>
+            <input type="text" matInput placeholder="โรงพยาบาล" value="" formControlName="name" required />
+          </mat-form-field>
+          <mat-form-field appearance="fill" class="half">
+            <mat-label>สสอ.ผู้ทำหน้าที่กำกับดูแล</mat-label>
 
-          <mat-select [(value)]="byid" formControlName="byid">
-            <mat-option
-              *ngFor="let byid of organizations"
-              [value]="byid.id"
-              required
-              >{{ byid.name }}</mat-option
-            >
-          </mat-select>
-        </mat-form-field>
-        <mat-form-field class="full-width">
-          <mat-label>ที่อยู่</mat-label>
-          <input
-            type="text"
-            matInput
-            placeholder="ที่อยู่"
-            value=""
-            formControlName="address"
-            required
-          />
-        </mat-form-field>
-        <mat-form-field class="full-width">
-          <mat-label>เบอร์โทรศัพท์</mat-label>
-          <input
-            type="text"
-            matInput
-            placeholder="เบอร์โทรศัพท์"
-            value=""
-            formControlName="telephone"
-            required
-          />
-        </mat-form-field>
+            <mat-select [(value)]="byid" formControlName="byid">
+              <mat-option *ngFor="let byid of organizations" [value]="byid.id" required>{{ byid.name }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>ที่อยู่</mat-label>
+            <input type="text" matInput placeholder="ที่อยู่" value="" formControlName="address" required />
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>เบอร์โทรศัพท์</mat-label>
+            <input type="text" matInput placeholder="เบอร์โทรศัพท์" value="" formControlName="telephone" required />
+          </mat-form-field>
 
-        <button mat-raised-button type="submit" class="half" color="primary">
-          ยืนยัน
-        </button>
-        <button
-          mat-raised-button
-          class="half"
-          type="submit"
-          color="warn"
-          (click)="cancle()"
-        >
-          ยกเลิก
-        </button>
-      </div>
-    </form>
-  </mat-card>
+          <button mat-raised-button type="submit" class="half" color="primary">
+            ยืนยัน
+          </button>
+          <button mat-raised-button class="half" type="submit" color="warn" (click)="cancle()">
+            ยกเลิก
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>
+
+<!--<div fxLayoutAlign="center center" fxFlexFill class="main-div">
+  <mat-card fxFlex="60">
+
+  </mat-card>
+</div>-->

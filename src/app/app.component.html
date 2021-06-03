@@ -2,7 +2,7 @@
   <mat-toolbar-row style="margin-left: 10px; margin-top: 10px; margin-bottom: 10px;">
     <a routerLink="dashboard" class="text-white">
       <h1><img src="./../assets/img/logo_web.png" style="width: 50px;" />
-        ระบบจัดการหลังบ้านสำหรับ Dengue Manager Application (สำนักงานควบคุมโรคที่ 6 ชลบุรี)</h1>
+        ระบบจัดการผู้ใช้ Dengue Manager Application (สำนักงานควบคุมโรคที่ 6 ชลบุรี)</h1>
     </a>
     <span class="example-spacer"></span>
     <button mat-button routerLink="dashboard">
@@ -11,7 +11,7 @@
     <button mat-button routerLink="profile" *ngIf="logoutbtn">
       <i class="fas fa-user-circle"></i> ข้อมูลส่วนตัว
     </button>
-    <button mat-button [matMenuTriggerFor]="menu" *ngIf="logoutbtn">
+    <button mat-button [matMenuTriggerFor]="menu">
       <i class="fas fa-tasks"></i> เมนู
     </button>
     <mat-menu #menu="matMenu">
@@ -19,6 +19,7 @@
       <button mat-menu-item routerLink="user">จัดการผู้ใช้งาน</button>
       <button mat-menu-item routerLink="organization">จัดการสังกัด</button>
     </mat-menu>
+    <i class="fa fa-user"></i>&nbsp;คุณ: {{ name }} ตำแหน่ง: {{ agency }} หน่วยงาน: {{ organization }}
     <button mat-icon-button class="" *ngIf="logoutbtn" (click)="logout()">
       <mat-icon>open_in_new</mat-icon>
     </button>

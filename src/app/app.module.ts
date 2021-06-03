@@ -75,15 +75,24 @@ import { EditorganizationHospitalComponent } from './editorganization-hospital/e
     MatPaginatorModule,
     Ng2SearchPipeModule,
     RouterModule.forRoot([
-      { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+      { path: '', redirectTo: '/login', pathMatch: 'full' },
       { path: 'login', component: LoginComponent },
-      { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
-      { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
-      { path: 'edit', component: EditComponent, canActivate: [AuthGuard] },
+      {
+        path: 'admin', component: AdminComponent,
+        // canActivate: [AuthGuard]
+      },
+      {
+        path: 'user', component: UserComponent,
+        // canActivate: [AuthGuard]
+      },
+      {
+        path: 'edit', component: EditComponent,
+        // canActivate: [AuthGuard]
+      },
       {
         path: 'profile',
         component: ProfileComponent,
-        canActivate: [AuthGuard],
+        // canActivate: [AuthGuard],
       },
       {
         path: 'dashboard',
@@ -113,17 +122,17 @@ import { EditorganizationHospitalComponent } from './editorganization-hospital/e
       {
         path: 'editorganization_main',
         component: EditorganizationMainComponent,
-        canActivate: [AuthGuard],
+        // canActivate: [AuthGuard],
       },
       {
         path: 'editorganization_sub',
         component: EditorganizationSubComponent,
-        canActivate: [AuthGuard],
+        // canActivate: [AuthGuard],
       },
       {
         path: 'editorganization_hospital',
         component: EditorganizationHospitalComponent,
-        canActivate: [AuthGuard],
+        // canActivate: [AuthGuard],
       },
     ]),
   ],
