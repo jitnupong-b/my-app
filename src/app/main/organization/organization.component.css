@@ -1,0 +1,42 @@
+.main-div mat-card {
+  padding: 10px;
+}
+
+th,
+td,
+button,
+a,
+input,
+mat-label,
+mat-toolbar,
+h3 {
+  font-family: "Kanit", sans-serif;
+}
+
+.buttons {
+  margin-right: 1%;
+  margin-left: 0.5%;
+  /* float: left; */
+  background-color: chocolate;
+}
+table {
+  width: 100%;
+}
+button {
+  margin-right: 2%;
+}
+
+.example-spacer {
+  flex: 1 1 auto;
+}
+
+.fontsize {
+  font-size: 18px;
+}
+.green {
+  color: green;
+}
+
+.yellow {
+  color: yellow;
+}

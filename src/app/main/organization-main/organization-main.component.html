@@ -1,0 +1,48 @@
+<div class="container">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a routerLink="../dashboard">หน้าแรก</a></li>
+      <li class="breadcrumb-item"><a routerLink="../organization">จัดการหน่วยงาน</a></li>
+      <li class="breadcrumb-item active" aria-current="page">เพิ่มหน่วยงานระดับ สสจ.</li>
+    </ol>
+  </nav>
+
+  <div class="card">
+    <div class="card-header">
+      เพิ่มหน่วยงานระดับ สสจ. ใหม่
+    </div>
+    <div class="card-body">
+      <form class="" [formGroup]="formGroup" (ngSubmit)="addOrganizationMain()">
+        <div class="form-container">
+          <h3 fxLayoutAlign="center center"></h3>
+          <mat-form-field class="full-width">
+            <mat-label>ชื่อหน่วยงาน</mat-label>
+            <input type="text" matInput placeholder="สำนักงานสาธารณสุขจังหวัดชลบุรี" value="" formControlName="name"
+              required />
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>ที่อยู่</mat-label>
+            <input type="text" matInput placeholder="ที่อยู่" value="" formControlName="address" required />
+          </mat-form-field>
+          <mat-form-field class="full-width">
+            <mat-label>เบอร์โทรศัพท์</mat-label>
+            <input type="text" matInput placeholder="เบอร์โทรศัพท์" value="" formControlName="telephone" required />
+          </mat-form-field>
+
+          <button mat-raised-button type="submit" class="half" color="primary">
+            ยืนยัน
+          </button>
+          <button mat-raised-button class="half" type="submit" color="warn" (click)="cancle()">
+            ยกเลิก
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!--<div fxLayoutAlign="center center" fxFlexFill class="main-div">
+  <mat-card fxFlex="60">
+
+  </mat-card>
+</div>-->

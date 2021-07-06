@@ -1,0 +1,74 @@
+import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthServiceService } from '../../auth-service.service';
+
+@Component({
+  selector: 'app-editorganization-hospital',
+  templateUrl: './editorganization-hospital.component.html',
+  styleUrls: ['./editorganization-hospital.component.css'],
+})
+export class EditorganizationHospitalComponent implements OnInit {
+  id: any;
+  name: any;
+  organization: any;
+  organizations: any;
+  address: any;
+  telephone: any;
+  formGroup!: FormGroup;
+  constructor(private authService: AuthServiceService, private router: Router) {
+    this.id = this.getIDOrganization();
+    this.authService
+      .getOrganizationByID(this.getIDOrganization())
+      .subscribe((result) => {
+        this.name = result.data[0].name;
+        this.organization = result.data[0].byname;
+        this.address = result.data[0].address;
+        this.telephone = result.data[0].telephone;
+      });
+    this.authService.getOrganizationsByPermission(4).subscribe((result) => {
+      this.organizations = result.data;
+    });
+  }
+  cancle() {
+    localStorage.removeItem('selectIDOrganization');
+    this.router.navigate(['main/organization']);
+  }
+  getIDOrganization() {
+    return localStorage.getItem('selectIDOrganization');
+  }
+  ngOnInit(): void {
+    this.initForm();
+  }
+  updateOrganization() {
+    if (this.formGroup.value.organization != '') {
+      this.formGroup.value.id = this.getIDOrganization();
+      this.formGroup.value.byid = this.formGroup.value.organization.byid;
+      this.formGroup.value.byname = this.formGroup.value.organization.byname;
+      this.authService
+        .updateOrganization_sub(this.formGroup.value)
+        .subscribe((result) => {
+          if (result.success) {
+            alert('ทำรายการสำเร็จ');
+            this.router.navigate(['organization']);
+          } else {
+            alert('ทำรายการล้มเหลว');
+            this.router.navigate(['organization']);
+          }
+        });
+    }
+  }
+  initForm() {
+    this.formGroup = new FormGroup({
+      // id: new FormControl({
+      //   value: '',
+      //   disabled: true,
+      // }),
+      id: new FormControl({ value: 'n/a', disabled: true }),
+      name: new FormControl('', Validators.required),
+      organization: new FormControl('', Validators.required),
+      address: new FormControl('', Validators.required),
+      telephone: new FormControl('', Validators.required),
+    });
+  }
+}

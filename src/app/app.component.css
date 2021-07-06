@@ -1,23 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+
 table {
   width: 100%;
 }
+
 button {
   margin-right: 2%;
 }
+
 .main-div mat-card {
   padding: 10px;
 }
+
 .example-spacer {
   flex: 1 1 auto;
 }
+
 .green {
   color: chartreuse;
 }
 
 .container {
-  margin-top: 100px;
   padding-bottom: 10px;
   color: #405065;
+  font-family: 'Kanit', sans-serif;
 }
 
 .search-hero {
@@ -29,9 +35,11 @@ button {
 .form-control {
   box-shadow: 0 10px 40px 0 #b0c1d9;
 }
+
 .form-control::placeholder {
   font-family: FontAwesome;
 }
+
 .full-width {
   width: 95%;
   margin-left: 2.5%;

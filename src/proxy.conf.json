@@ -1,0 +1,10 @@
+{
+    "/api/*": {
+        "target": "http://223.27.246.195/dengue-manager-api/api/",
+        "secure": false,
+        "changeOrigin": true,
+        "pathRewrite": {
+            "^/api": ""
+        }
+    }
+}

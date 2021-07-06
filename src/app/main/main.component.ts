@@ -1,17 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-// import { threadId } from 'worker_threads';
-import { AuthServiceService } from './auth-service.service';
+import { AuthServiceService } from '../auth-service.service';
+
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  selector: 'app-main',
+  templateUrl: './main.component.html',
+  styleUrls: ['./main.component.css']
 })
-export class AppComponent {
+export class MainComponent {
   loginbtn: boolean;
   logoutbtn: boolean;
   status: boolean = false;
-  // title = '';
 
   username: any;
   organization: any;
@@ -33,6 +32,7 @@ export class AppComponent {
     authService.getLoggedInName.subscribe((name: boolean) =>
       this.changeName(name)
     );
+
     if (this.authService.isLoggedIn2()) {
       this.loginbtn = false;
       this.logoutbtn = true;
@@ -45,22 +45,16 @@ export class AppComponent {
     } else {
       this.status = false;
     }
-
-
   }
+
   private changeName(name: boolean): void {
-    // if (this.authService.getStatus() === 'Supporter3') {
-    //   this.status = true;
-    // } else {
-    //   this.status = false;
-    // }
     this.logoutbtn = name;
     this.loginbtn = !name;
   }
-  
+
   logout() {
     this.authService.deleteLoggedIn();
     this.router.navigate(['/login']);
-    // this.router.navigate(['login']);
   }
+
 }

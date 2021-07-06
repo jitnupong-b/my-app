@@ -14,28 +14,29 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { DashboardComponent } from './dashboard/dashboard.component';
+import { DashboardComponent } from './main/dashboard/dashboard.component';
 import { AuthGuard } from './auth.guard';
 import { RouterModule } from '@angular/router';
 import { MatMenuModule } from '@angular/material/menu';
-import { AdminComponent } from './admin/admin.component';
-import { UserComponent } from './user/user.component';
+import { AdminComponent } from './main/admin/admin.component';
+import { UserComponent } from './main/user/user.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { TokenInterceptorService } from './token-interceptor.service';
 import { AuthServiceService } from './auth-service.service';
-import { EditComponent } from './edit/edit.component';
+import { EditComponent } from './main/edit/edit.component';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { ProfileComponent } from './profile/profile.component';
-import { OrganizationComponent } from './organization/organization.component';
-import { OrganizationMainComponent } from './organization-main/organization-main.component';
-import { OrganizationSubComponent } from './organization-sub/organization-sub.component';
-import { EditorganizationMainComponent } from './editorganization-main/editorganization-main.component';
-import { EditorganizationSubComponent } from './editorganization-sub/editorganization-sub.component';
+import { ProfileComponent } from './main/profile/profile.component';
+import { OrganizationComponent } from './main/organization/organization.component';
+import { OrganizationMainComponent } from './main/organization-main/organization-main.component';
+import { OrganizationSubComponent } from './main/organization-sub/organization-sub.component';
+import { EditorganizationMainComponent } from './main/editorganization-main/editorganization-main.component';
+import { EditorganizationSubComponent } from './main/editorganization-sub/editorganization-sub.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
-import { OrganizationHospitalComponent } from './organization-hospital/organization-hospital.component';
-import { EditorganizationHospitalComponent } from './editorganization-hospital/editorganization-hospital.component';
+import { OrganizationHospitalComponent } from './main/organization-hospital/organization-hospital.component';
+import { EditorganizationHospitalComponent } from './main/editorganization-hospital/editorganization-hospital.component';
+import { MainComponent } from './main/main.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,6 +53,7 @@ import { EditorganizationHospitalComponent } from './editorganization-hospital/e
     EditorganizationSubComponent,
     OrganizationHospitalComponent,
     EditorganizationHospitalComponent,
+    MainComponent
   ],
   imports: [
     BrowserModule,
@@ -74,67 +76,27 @@ import { EditorganizationHospitalComponent } from './editorganization-hospital/e
     MatSortModule,
     MatPaginatorModule,
     Ng2SearchPipeModule,
-    RouterModule.forRoot([
-      { path: '', redirectTo: '/login', pathMatch: 'full' },
-      { path: 'login', component: LoginComponent },
+    RouterModule.forChild([
       {
-        path: 'admin', component: AdminComponent,
-        // canActivate: [AuthGuard]
-      },
-      {
-        path: 'user', component: UserComponent,
-        // canActivate: [AuthGuard]
-      },
-      {
-        path: 'edit', component: EditComponent,
-        // canActivate: [AuthGuard]
-      },
-      {
-        path: 'profile',
-        component: ProfileComponent,
-        // canActivate: [AuthGuard],
-      },
-      {
-        path: 'dashboard',
-        component: DashboardComponent,
-        // canActivate: [AuthGuard],
-      },
-      {
-        path: 'organization',
-        component: OrganizationComponent,
-        // canActivate: [AuthGuard],
-      },
-      {
-        path: 'organization-main',
-        component: OrganizationMainComponent,
-        // canActivate: [AuthGuard],
-      },
-      {
-        path: 'organization-sub',
-        component: OrganizationSubComponent,
-        // canActivate: [AuthGuard],
-      },
-      {
-        path: 'organization-hospital',
-        component: OrganizationHospitalComponent,
-        // canActivate: [AuthGuard],
-      },
-      {
-        path: 'editorganization_main',
-        component: EditorganizationMainComponent,
-        // canActivate: [AuthGuard],
-      },
-      {
-        path: 'editorganization_sub',
-        component: EditorganizationSubComponent,
-        // canActivate: [AuthGuard],
-      },
-      {
-        path: 'editorganization_hospital',
-        component: EditorganizationHospitalComponent,
-        // canActivate: [AuthGuard],
-      },
-    ]),
+        path: 'main',
+        component: MainComponent,
+        children: [
+          { path: 'dashboard', component: DashboardComponent },
+          { path: 'user', component: UserComponent },
+          { path: 'profile', component: ProfileComponent },
+          { path: 'admin', component: AdminComponent },
+          { path: 'organization', component: OrganizationComponent },
+          { path: 'organization-main', component: OrganizationMainComponent },
+          { path: 'organization-sub', component: OrganizationSubComponent },
+          { path: 'organization-hospital', component: OrganizationHospitalComponent },
+          { path: 'editorganization_main', component: EditorganizationMainComponent },
+          { path: 'editorganization_sub', component: EditorganizationSubComponent },
+          { path: 'editorganization-hospital', component: EditorganizationHospitalComponent },
+          { path: 'edit', component: EditComponent }
+        ],
+        canActivate: [AuthGuard]
+      }
+    ])
   ],
   providers: [
     AuthServiceService,

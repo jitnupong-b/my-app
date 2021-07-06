@@ -1,26 +1,29 @@
-<div fxLayoutAlign="center center" fxFlexFill class="main-div">
-  <mat-card>
-    <mat-card-header>
-      <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>เข้าสู่ระบบ</mat-card-title>
-      <mat-card-subtitle>กรุณากรอกอีเมล์และรหัสผ่านของท่าน</mat-card-subtitle>
-    </mat-card-header>
-    <form fxLayoutAlign="stretch" fxLayout="column" class="login-form" [formGroup]="formGroup"
-      (ngSubmit)="loginProces()">
-      <mat-form-field>
-        <input matInput placeholder="อีเมล" formControlName="email" />
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput type="password" placeholder="พาสเวิร์ด" formControlName="password" />
-      </mat-form-field>
-      <div class="row">
-        <div class="col-6 text-right">
-          <button mat-raised-button type="submit" color="primary"><i class="fa fa-sign-in-alt"></i> เข้าสู่ระบบ</button>
+<div class="container" style="margin-top: 120px; font-family: 'Kanit'">
+  <div fxLayoutAlign="center center" fxFlexFill>
+    <mat-card>
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image"></div>
+        <mat-card-title>เข้าสู่ระบบ</mat-card-title>
+        <mat-card-subtitle>กรุณากรอกอีเมล์และรหัสผ่านของท่าน</mat-card-subtitle>
+      </mat-card-header>
+      <form fxLayoutAlign="stretch" fxLayout="column" class="login-form" [formGroup]="formGroup"
+        (ngSubmit)="loginProces()">
+        <mat-form-field>
+          <input matInput placeholder="อีเมล" formControlName="email" />
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput type="password" placeholder="พาสเวิร์ด" formControlName="password" />
+        </mat-form-field>
+        <div class="row">
+          <div class="col-6 text-right">
+            <button mat-raised-button type="submit" color="primary"><i class="fa fa-sign-in-alt"></i>
+              เข้าสู่ระบบ</button>
+          </div>
+          <div class="col-6 text-left">
+            <button mat-raised-button color="accent">ยกเลิก</button>
+          </div>
         </div>
-        <div class="col-6 text-left">
-          <button mat-raised-button color="accent">ยกเลิก</button>
-        </div>
-      </div>
-    </form>
-  </mat-card>
+      </form>
+    </mat-card>
+  </div>
 </div>

@@ -6,9 +6,9 @@ import {
   JsonpClientBackend,
 } from '@angular/common/http';
 import { Injectable, Output, EventEmitter } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { baseUrl } from 'src/environments/environment';
-import { map } from 'rxjs/operators';
+import { catchError, map } from 'rxjs/operators';
 const TOKEN_HEADER_KEY = 'Authorization';
 @Injectable({
   providedIn: 'root',
@@ -16,7 +16,7 @@ const TOKEN_HEADER_KEY = 'Authorization';
 export class AuthServiceService {
   @Output() getLoggedInName: EventEmitter<any> = new EventEmitter();
   loggedInStatus = JSON.parse(localStorage.getItem('loggedIn') || 'false');
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   setLoggedIn(value: boolean) {
     this.loggedInStatus = value;
@@ -30,7 +30,6 @@ export class AuthServiceService {
     );
   }
   getName() {
-    // return localStorage.getItem('name');
     return localStorage.getItem('name');
   }
   getMyEmail() {
@@ -55,13 +54,16 @@ export class AuthServiceService {
 
   getMystatusName() {
     let mystatus = this.getMyStatus();
+    let mystatusName = '';
     this.getStatus().subscribe((data: any) => {
       for (let i = 0; i < data.data.length; i++) {
         if (mystatus == data.data[i].permission) {
+          mystatusName = data.data[i].status;
           localStorage.setItem('mystatusname', data.data[i].status);
         }
       }
     });
+    return mystatusName;
   }
   myOrganization() {
     return localStorage.getItem('organization');
@@ -78,25 +80,10 @@ export class AuthServiceService {
     return false;
   }
   deleteLoggedIn() {
-    // localStorage.removeItem('loggedIn');
     localStorage.clear();
   }
 
   login(data: any): Observable<any> {
-    this.http.post(`${baseUrl}users/login`, data).subscribe((dataa: any) => {
-      localStorage.setItem(
-        'name',
-        dataa.result.firstName + ' ' + dataa.result.lastName
-      );
-      localStorage.setItem('email', dataa.result.email);
-      localStorage.setItem('IDOrganization', dataa.result.ID_organization);
-      localStorage.setItem('status', dataa.result.status);
-      localStorage.setItem('organization', dataa.result.organization);
-      localStorage.setItem('agency', dataa.result.agency);
-      localStorage.setItem('ID', dataa.result.id);
-      localStorage.setItem('token', dataa.token);
-      this.getMystatusName();
-    });
     return this.http.post(`${baseUrl}users/login`, data);
   }
 
@@ -120,25 +107,25 @@ export class AuthServiceService {
   }
 
   update(data: any): Observable<any> {
-    return this.http.patch(`${baseUrl}users/updateProfiles`, data);
+    return this.http.post(`${baseUrl}users/updateProfiles`, data);
   }
 
   updatePassword(data: any): Observable<any> {
-    return this.http.patch(`${baseUrl}users/updatePassword`, data);
+    return this.http.post(`${baseUrl}users/updatePassword`, data);
   }
   updateOrganization_main(data: any): Observable<any> {
-    return this.http.patch(`${baseUrl}users/updateOrganization_main`, data);
+    return this.http.post(`${baseUrl}users/updateOrganization_main`, data);
   }
   updateOrganization_sub(data: any): Observable<any> {
-    return this.http.patch(`${baseUrl}users/updateOrganization_sub`, data);
+    return this.http.post(`${baseUrl}users/updateOrganization_sub`, data);
   }
 
   updatedeleteUser(data: any): Observable<any> {
-    return this.http.patch(`${baseUrl}users/updatedeleteUser`, data);
+    return this.http.post(`${baseUrl}users/updatedeleteUser`, data);
   }
 
   deleteOrganization(data: any): Observable<any> {
-    return this.http.delete(`${baseUrl}users/deleteOrganization`, data);
+    return this.http.post(`${baseUrl}users/deleteOrganization`, data);
   }
 
   users(): Observable<any> {

@@ -1,0 +1,30 @@
+<mat-toolbar color="primary" style="font-family: 'Kanit', sans-serif;">
+    <mat-toolbar-row style="margin-left: 10px; margin-top: 10px; margin-bottom: 10px;">
+        <a routerLink="dashboard" class="text-white">
+            <h1><img src="./assets/img/logo_web.png" style="width: 50px;" />
+                ระบบจัดการผู้ใช้ Dengue Manager Application (สำนักงานควบคุมโรคที่ 6 ชลบุรี)</h1>
+        </a>
+        <span class="example-spacer"></span>
+        <button mat-button routerLink="dashboard">
+            <i class="fas fa-home"></i> หน้าแรก
+        </button>
+        <button mat-button routerLink="profile" *ngIf="logoutbtn">
+            <i class="fas fa-user-circle"></i> ข้อมูลส่วนตัว
+        </button>
+        <button mat-button [matMenuTriggerFor]="menu" *ngIf="logoutbtn">
+            <i class="fas fa-tasks"></i> เมนู
+        </button>
+        <mat-menu #menu="matMenu">
+            <!-- <button mat-menu-item routerLink="admin">Admin</button> -->
+            <button mat-menu-item routerLink="user">จัดการผู้ใช้งาน</button>
+            <button mat-menu-item routerLink="organization">จัดการสังกัด</button>
+        </mat-menu>
+        <div *ngIf="logoutbtn">
+            <i class="fa fa-user"></i>&nbsp;คุณ: {{ username }} ตำแหน่ง: {{ agency }} หน่วยงาน: {{ organization }}
+            <button mat-icon-button *ngIf="logoutbtn" (click)="logout()">
+                <i class="fas fa-sign-out-alt"></i>&nbsp;ออกจากระบบ
+            </button>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>
+<router-outlet></router-outlet>
