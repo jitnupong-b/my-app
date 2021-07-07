@@ -96,11 +96,11 @@ export class ProfileComponent implements OnInit {
     if (this.formGroup.value) {
       this.formGroup.value.id = this.getID();
       this.formGroup.value.ID_organization = this.ID_organization;
+      console.log(this.organization);
 
       this.authService
         .getOrganizationByName(this.organization)
         .subscribe((results) => {
-          console.log(results);
           this.formGroup.value.organization = results.data[0].name;
 
           this.authService.update(this.formGroup.value).subscribe((result) => {

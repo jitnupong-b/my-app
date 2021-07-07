@@ -2,5 +2,5 @@ export const environment = {
   production: true
 };
 
-export const baseUrl = `/api`;
+export const baseUrl = `/dengue-manager-api/api/`;
 

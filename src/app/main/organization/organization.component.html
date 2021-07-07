@@ -43,7 +43,10 @@
                       ? 'green'
                       : null
                 }">
-                {{ element.status }}
+                {{ 
+                  element.status == 'Supporter 2' ? ('เจ้าหน้าที่สนับสนุนระดับจังหวัด') : ( 
+                  element.status == 'Supporter 1' ? ('เจ้าหน้าที่สนับสนุนระดับอำเภอ') : ('เจ้าหน้าที่ระดับปฏิบัติงาน'))
+                }}
               </td>
             </ng-container>
 

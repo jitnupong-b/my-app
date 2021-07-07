@@ -24,11 +24,11 @@ export class UserComponent implements OnInit, AfterViewInit {
     'agency',
     'firstName',
     'lastName',
-    'gender',
+    //'gender',
     'email',
-    'number',
+    //'number',
     'organization',
-    'owner',
+    //'owner',
     'Manage',
   ];
   searchText: any;
